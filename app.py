@@ -1,5 +1,5 @@
 from flask import Flask
-import src.driver
+import src.web_crawler
 app = Flask(__name__)
 
 
@@ -10,7 +10,7 @@ def home():
 
 @app.route("/news_list")
 def get_news():
-  return src.driver.main()
+  return src.web_crawler.do_basic_crawl()
 
 
 if __name__ == "__main__":
