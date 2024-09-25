@@ -3,3 +3,4 @@
 .venv
 local_file.txt
 __pycache__
+.pytest_cache
