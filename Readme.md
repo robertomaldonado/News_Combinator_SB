@@ -16,6 +16,18 @@ Using the application locally:
 
 > flask run --host 0.0.0.0 --port 8000
 
+3. To read the news summary, open your favorite browser and navigate to:
+
+> http://127.0.0.1:8000
+
+4. Add the endpoints to the address:
+
+- /news-list: To see them ordered by default, as the website has them.
+
+- /filter-long-titles: Filter all entries with more than five words in the title ordered by the number of comments first.
+
+- /filter-short-titles: Filter all entries with less than or equal to five words in the title ordered by points.
+
 Running tests for the application locally:
 
 > pytest test/test_internal.py
