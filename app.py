@@ -2,6 +2,7 @@ from flask import Flask
 from src.WebCrawler import WebCrawler
 
 app = Flask(__name__)
+my_crawler = WebCrawler()
 
 
 @app.route("/")
@@ -16,5 +17,4 @@ def get_news():
 
 
 if __name__ == "__main__":
-  my_crawler = WebCrawler()
   app.run(debug=True)
