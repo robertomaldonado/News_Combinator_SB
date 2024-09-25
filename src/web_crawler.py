@@ -38,9 +38,12 @@ def do_basic_crawl():
     for i in range(len(news_sections)):
       match_results = None
       match_results = re.search(pattern, news_sections[i])
-      tmp = match_results.group()
-      tmp = re.sub("<.*?>", "", tmp)
-      tmp_list.append(tmp)
+      if match_results == None:
+        tmp_list.append("0")
+      else:
+        tmp = match_results.group()
+        tmp = re.sub("<.*?>", "", tmp)
+        tmp_list.append(tmp)
     return tmp_list
 
   def retrieve_titles(news_sections: List[str]) -> List[str]:
