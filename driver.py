@@ -3,20 +3,21 @@ Create a web crawler using scraping techniques to extract the first 30 entries f
 Store: Number, the title, the points, and the number of comments for each entry.
 """
 from typing import List
-from urllib.request import urlopen
 import re
 
 
 def main():
+  # Retrieve news from the specified website
   # url = "https://news.ycombinator.com"
   # page = urlopen(url)
   # html = page.read().decode("utf-8")
 
-  sections = []
-  with open("testfile.txt", 'r') as filename:
+  # Code to test locally (limited access to internet)
+  with open("local_file.txt", 'r') as filename:
     html = filename.readlines()
   html = "".join(html)
 
+  # Create a partial list with the needed content
   sections = list()
   for i in range(1, 30):
     news_start = html.find(f'<span class="rank">{i}.</span>')
@@ -47,19 +48,30 @@ def main():
       tmp_list.append(t[13])
     return tmp_list
 
-  id_pattern = "[1-9]?[0-9]\\."
-  points_pattern = "[0-9]?[0-9]?[0-9]?[0-9] point"
-  comments_pattern = "[0-9]?[0-9]?[0-9]\\&nbsp\\;comment"
-  id_list = retrieve_values(id_pattern, sections)
-  points_list = retrieve_values(points_pattern, sections)
-  comments_list = retrieve_values(comments_pattern, sections)
-  titles_list = retrieve_titles(sections)
+  def get_news_list():
+    """ In this section we use both approaches:
+    - Using the pattern
+    - Titles retrieves from the position after using regex findall
+    """
+    # Define patterns to be used
+    id_pattern = "[1-9]?[0-9]\\."
+    points_pattern = "[0-9]?[0-9]?[0-9]?[0-9] point"
+    comments_pattern = "[0-9]?[0-9]?[0-9]\\&nbsp\\;comment"
+    # Use patterns to retrieve the values we seek
+    id_list = retrieve_values(id_pattern, sections)
+    points_list = retrieve_values(points_pattern, sections)
+    comments_list = retrieve_values(comments_pattern, sections)
+    # Find titles in the html section
+    titles_list = retrieve_titles(sections)
 
-  news_list = list()
-  for i in range(len(sections)):
-    news_list.append([id_list[i], titles_list[i],
-                      points_list[i], comments_list[i]])
-  print(news_list)
+    # Build the resulting list
+    news_list = list()
+    for i in range(len(sections)):
+      news_list.append([id_list[i][:-1], titles_list[i],
+                        points_list[i][:-len(" point")], comments_list[i][:-len("&nbsp;comment")]])
+    return news_list
+
+  print(get_news_list())
 
 
 if __name__ == '__main__':
