@@ -71,7 +71,7 @@ def main():
                         points_list[i][:-len(" point")], comments_list[i][:-len("&nbsp;comment")]])
     return news_list
 
-  print(get_news_list())
+  return get_news_list()
 
 
 if __name__ == '__main__':
