@@ -1,5 +1,6 @@
 from flask import Flask
-import src.web_crawler
+from src.WebCrawler import WebCrawler
+
 app = Flask(__name__)
 
 
@@ -10,8 +11,10 @@ def home():
 
 @app.route("/news_list")
 def get_news():
-  return src.web_crawler.do_basic_crawl()
+  my_crawler.set_news_list()
+  return my_crawler.news_list
 
 
 if __name__ == "__main__":
+  my_crawler = WebCrawler()
   app.run(debug=True)
