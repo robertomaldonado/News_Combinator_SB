@@ -3,19 +3,20 @@ Create a web crawler using scraping techniques to extract the first 30 entries f
 Store: Number, the title, the points, and the number of comments for each entry.
 """
 from typing import List
+from urllib.request import urlopen
 import re
 
 
 def do_basic_crawl():
   # Retrieve news from the specified website
-  # url = "https://news.ycombinator.com"
-  # page = urlopen(url)
-  # html = page.read().decode("utf-8")
+  url = "https://news.ycombinator.com"
+  page = urlopen(url)
+  html = page.read().decode("utf-8")
 
   # Code to test locally (limited access to internet)
-  with open("local_file.txt", 'r') as filename:
-    html = filename.readlines()
-  html = "".join(html)
+  # with open("local_file.txt", 'r') as filename:
+  #   html = filename.readlines()
+  # html = "".join(html)
 
   # Create a partial list with the needed content
   def scrap_partial_data():
