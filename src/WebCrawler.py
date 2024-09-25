@@ -8,6 +8,7 @@ class WebCrawler:
 
   def __init__(self) -> None:
     self.news_list = None
+    self.filtered_list = None
 
   @staticmethod
   def retrieve_values(pattern: str, news_sections: List[str]) -> List[str]:
@@ -74,8 +75,18 @@ class WebCrawler:
                         points_list[i][:-len(" point")], comments_list[i][:-len("&nbsp;comment")]])
     self.news_list = news_list
 
-  def filter_long_title_sort_by_comments(self, current_news) -> List[List[str]]:
-    return current_news
+  def filter_long_title_sort_by_comments(self) -> List[List[str]]:
+    tmp_filtered_list = list()
+    for i in range(len(self.news_list)):
+      curr_title = self.news_list[i][1]
+      if len(curr_title.split(" ")) > 5:
+        tmp_filtered_list.append(self.news_list[i])
+    self.filtered_list = tmp_filtered_list[:]  # Pass a copy, not the ref
 
-  def filter_short_title_sort_by_points(self, current_news) -> List[List[str]]:
-    return current_news
+  def filter_short_title_sort_by_points(self) -> List[List[str]]:
+    tmp_filtered_list = list()
+    for i in range(len(self.news_list)):
+      curr_title = self.news_list[i][1]
+      if len(curr_title.split(" ")) <= 5:
+        tmp_filtered_list.append(self.news_list[i])
+    self.filtered_list = tmp_filtered_list[:]  # Pass a copy, not the ref
