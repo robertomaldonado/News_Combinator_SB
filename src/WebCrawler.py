@@ -76,6 +76,7 @@ class WebCrawler:
     self.news_list = news_list
 
   def filter_long_title_sort_by_comments(self) -> List[List[str]]:
+    # TO-DO: sort based on comments count
     tmp_filtered_list = list()
     for i in range(len(self.news_list)):
       curr_title = self.news_list[i][1]
@@ -84,6 +85,7 @@ class WebCrawler:
     self.filtered_list = tmp_filtered_list[:]  # Pass a copy, not the ref
 
   def filter_short_title_sort_by_points(self) -> List[List[str]]:
+    # TO-DO: sort based on points
     tmp_filtered_list = list()
     for i in range(len(self.news_list)):
       curr_title = self.news_list[i][1]
