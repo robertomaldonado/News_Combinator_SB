@@ -1,4 +1,3 @@
-![example workflow](https://github.com/robertomaldonado/News_Combinator_SB/actions/workflows/main.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.12-blue?logo=python)
 
 # News Combinator
