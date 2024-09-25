@@ -2,7 +2,19 @@
 
 # News Combinator
 
-This rproject aims to solve the given prompt.
+This project aims to solve the given prompt.
+
+Local testing
+
+1. Create venv and install packages:
+
+- python3 -m venv venv
+- source venv/bin/activate
+- pip3 install -r requirements.txt
+
+2. To run the application locally please use:
+
+> > flask run --host 0.0.0.0 --port 8000
 
 # Prompt
 
