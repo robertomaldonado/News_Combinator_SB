@@ -29,9 +29,11 @@ Using the application locally:
 
 - /filter-short-titles: Filter all entries with less than or equal to five words in the title ordered by points.
 
+Automated testing added to the application with github-actions
+
 Running tests for the application locally:
 
-> pytest test/test_internal.py
+> pytest
 
 # Prompt
 
