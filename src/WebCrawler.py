@@ -97,7 +97,6 @@ class WebCrawler:
     self.filtered_list = sorted_list[:]  # Pass a copy, not the ref
 
   def filter_short_title_sort_by_points(self) -> List[List[str]]:
-    # TO-DO: sort based on points
     tmp_filtered_list = list()
     points_count = list()
     sorted_list = list()
