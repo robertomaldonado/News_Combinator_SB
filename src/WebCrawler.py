@@ -70,6 +70,9 @@ class WebCrawler:
 
     news_list = list()
     for i in range(len(news_sections)):
+      # Check for empty data, we have seen this issue in the website. Otherwise skip it
+      if titles_list[i] == "" or points_list[i] == "" or comments_list[i] == "":
+        continue
       news_list.append([id_list[i][:-1], titles_list[i],
                         points_list[i][:-len(" point")], comments_list[i][:-len("&nbsp;comment")]])
     self.news_list = news_list
