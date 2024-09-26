@@ -8,7 +8,7 @@ my_crawler = WebCrawler()
 @app.route("/")
 def home():
   my_crawler.set_news_list()
-  return "<p>App running...</p>"
+  return "<h2>Welcome to News Web Scrapper</h2>Usable endpoints:<p>/all-news</p><p>/filter-long-titles</p><p>/filter-short-titles</p>"
 
 
 @app.route("/all-news")

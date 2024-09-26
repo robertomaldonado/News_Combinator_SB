@@ -59,7 +59,6 @@ class WebCrawler:
 
   def set_news_list(self) -> None:
     news_sections = self.scrap_partial_data()
-    # Define patterns to be used
     id_pattern = "[1-9]?[0-9]\\."
     points_pattern = "[0-9]?[0-9]?[0-9]?[0-9] point"
     comments_pattern = "[0-9]?[0-9]?[0-9]\\&nbsp\\;comment"
@@ -71,24 +70,47 @@ class WebCrawler:
 
     news_list = list()
     for i in range(len(news_sections)):
+      # Check for empty data, we have seen this issue in the website. Otherwise skip it
+      if titles_list[i] == "" or points_list[i] == "" or comments_list[i] == "":
+        continue
       news_list.append([id_list[i][:-1], titles_list[i],
                         points_list[i][:-len(" point")], comments_list[i][:-len("&nbsp;comment")]])
     self.news_list = news_list
 
   def filter_long_title_sort_by_comments(self) -> List[List[str]]:
-    # TO-DO: sort based on comments count
     tmp_filtered_list = list()
+    comments_count = list()
+    sorted_list = list()
+
     for i in range(len(self.news_list)):
       curr_title = self.news_list[i][1]
       if len(curr_title.split(" ")) > 5:
         tmp_filtered_list.append(self.news_list[i])
-    self.filtered_list = tmp_filtered_list[:]  # Pass a copy, not the ref
+        comments_count.append(int(self.news_list[i][3]))
+
+    comments_count = sorted(comments_count)
+    for num in comments_count:
+      for j in range(len(tmp_filtered_list)):
+        if num == int(tmp_filtered_list[j][3]):
+          sorted_list.append(tmp_filtered_list[j])
+
+    self.filtered_list = sorted_list[:]  # Pass a copy, not the ref
 
   def filter_short_title_sort_by_points(self) -> List[List[str]]:
-    # TO-DO: sort based on points
     tmp_filtered_list = list()
+    points_count = list()
+    sorted_list = list()
+
     for i in range(len(self.news_list)):
-      curr_title = self.news_list[i][1]
+      curr_title = self.news_list[i][2]
       if len(curr_title.split(" ")) <= 5:
         tmp_filtered_list.append(self.news_list[i])
-    self.filtered_list = tmp_filtered_list[:]  # Pass a copy, not the ref
+        points_count.append(int(self.news_list[i][2]))
+
+    points_count = sorted(points_count)
+    for num in points_count:
+      for j in range(len(tmp_filtered_list)):
+        if num == int(tmp_filtered_list[j][2]):
+          sorted_list.append(tmp_filtered_list[j])
+
+    self.filtered_list = sorted_list[:]  # Pass a copy, not the ref

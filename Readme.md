@@ -23,7 +23,7 @@ Using the application locally:
 
 4. Add the endpoints to the address:
 
-- /news-list: To see them ordered by default, as the website has them.
+- /all-news: To see them ordered by default, as the website has them.
 
 - /filter-long-titles: Filter all entries with more than five words in the title ordered by the number of comments first.
 
