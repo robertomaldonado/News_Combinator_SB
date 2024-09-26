@@ -5,8 +5,6 @@ from src.utilities.sorter import *
 
 
 class WebCrawler:
-  raw_news = None
-
   def __init__(self) -> None:
     self.news_list = None
     self.filtered_list = None
@@ -32,7 +30,7 @@ class WebCrawler:
       tmp_list.append(tmp[13])
     return tmp_list
 
-    # Create a partial list with the needed content
+  # Create a partial list with the needed content
   def scrap_partial_data(self) -> List[List[str]]:
       # Retrieve news from the specified website
     url = "https://news.ycombinator.com"
