@@ -48,6 +48,24 @@ To access please visit:
 
 ---
 
+## Deployed runnning app:
+
+A copy of an earlier stage of the project was uploaded to Pythonanywhere
+
+To see this app, please navigate to: http://robmaldo.pythonanywhere.com
+
+---
+
+## Technology stack used:
+
+- Flask to generate the API
+- Github actions to run tests on Github
+- Pytest to run tests locally
+- Swagger to document the endpoints
+- Pythonanywhere to host an app working with a local file
+
+---
+
 ### Solved prompt
 
 From there, we want it to be able to perform a couple of filtering operations:
