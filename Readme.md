@@ -1,11 +1,9 @@
 ![Web Crawler Status](https://github.com/robertomaldonado/News_Combinator_SB/actions/workflows/python-app.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.12-blue?logo=python)
 
-# News Combinator
+# News Combinator - Web Scrapper
 
-This project aims to solve the given prompt.
-
-Using the application locally:
+## Using the application locally:
 
 1. Create venv and install packages:
 
@@ -29,13 +27,28 @@ Using the application locally:
 
 - /filter-short-titles: Filter all entries with less than or equal to five words in the title ordered by points.
 
+---
+
+## Testing:
+
 Automated testing added to the application with github-actions
 
 Running tests for the application locally:
 
 > pytest
 
-# Prompt
+---
+
+## Documentation:
+
+This project has been documented with Swagger for flask
+To access please visit:
+
+> http://127.0.0.1:8000/apidocs
+
+---
+
+### Solved prompt
 
 From there, we want it to be able to perform a couple of filtering operations:
 
