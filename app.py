@@ -7,7 +7,7 @@ swagger = Swagger(app)
 my_crawler = WebCrawler()
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
   """
   ---
@@ -16,10 +16,10 @@ def home():
       description: A short menu, displaying the three available endpoints
   """
   my_crawler.set_news_list()
-  return "<h2>Welcome to News Web Scrapper</h2>Usable endpoints:<p>/all-news</p><p>/filter-long-titles</p><p>/filter-short-titles</p>"
+  return "<h2>Welcome to News Web Scrapper</h2>Usable endpoints:<p>/apidocs</p><p>/all-news</p><p>/filter-long-titles</p><p>/filter-short-titles</p>"
 
 
-@app.route("/all-news")
+@app.route("/all-news", methods=['GET'])
 def all_news():
   """
   ---
@@ -30,7 +30,7 @@ def all_news():
   return my_crawler.news_list
 
 
-@app.route("/filter-long-titles")
+@app.route("/filter-long-titles", methods=['GET'])
 def filter_long():
   """
   ---
@@ -42,7 +42,7 @@ def filter_long():
   return my_crawler.filtered_list
 
 
-@app.route("/filter-short-titles")
+@app.route("/filter-short-titles", methods=['GET'])
 def filter_short():
   """
   ---
